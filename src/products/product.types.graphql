@@ -1,0 +1,20 @@
+scalar JSON
+
+type Product {
+  id: Int,
+  name: String,
+  price: Int
+}
+
+type Query {
+  products(sort: String, limit: Int, start: Int, where: JSON): [Product]
+  product(id: Int!): Product
+}
+
+type Subscription {
+  newProduct: Product
+}
+
+type Mutation {
+  createProduct(name: String, price: Int): Product
+}
