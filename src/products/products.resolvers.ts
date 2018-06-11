@@ -12,10 +12,15 @@ export class ProductResolvers {
     private readonly productService: ProductsService
   ) {}
 
-  @Query('products')
+  @Query('allProducts')
   async getProducts(obj, args, context, info): Promise<Products[]> {
-    const { sort, limit, start, where } = args
-    return await this.productService.findAll({sort,limit,start,where})
+    const { first, skip } = args
+    return await this.productService.findAll({ first, skip })
+  }
+
+  @Query('_allProductsMeta')
+  async getProductsCount(obj, args, context, info){
+    return { count: await this.productService.countProducts() }
   }
 
   @Query('product')

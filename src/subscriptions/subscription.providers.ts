@@ -2,7 +2,7 @@ import { createServer } from 'http'
 
 import { SUBSCRIPTION_SERVER } from './subscription.constants'
 
-export const createSubscriptionProviders = (port: number = 3001) => [
+export const createSubscriptionProviders = (port: number = 3002) => [
   {
     provide: SUBSCRIPTION_SERVER,
     useFactory: () => {

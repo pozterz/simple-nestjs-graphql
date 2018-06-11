@@ -1,13 +1,19 @@
-scalar JSON
+scalar Date
 
 type Product {
   id: Int,
   name: String,
-  price: Int
+  price: Int,
+  createdAt: Date
+}
+
+type ProductMeta {
+  count: Int
 }
 
 type Query {
-  products(sort: String, limit: Int, start: Int, where: JSON): [Product]
+  allProducts(orderBy: Date, first: Int!, skip: Int!): [Product]
+  _allProductsMeta: ProductMeta
   product(id: Int!): Product
 }
 

@@ -9,7 +9,14 @@ export class ProductsService {
   ) {}
 
   async findAll(filter): Promise<Products[]> {
-    return await this.products.findAll();
+    return await this.products.findAll({
+      limit: filter.first,
+      offset: filter.skip
+    });
+  }
+
+  async countProducts():  Promise<Number> {
+    return await this.products.count()
   }
 
   async findProduct(id): Promise<Products> {

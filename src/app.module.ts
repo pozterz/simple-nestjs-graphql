@@ -28,7 +28,7 @@ export class AppModule implements NestModule {
 
     consumer.apply(graphiqlExpress({
       endpointURL: '/graphql',
-      subscriptionsEndpoint: `ws://localhost:3001/subscriptions`
+      subscriptionsEndpoint: `ws://localhost:3002/subscriptions`
     }))
     .forRoutes('/graphiql')
     .apply(graphqlExpress( req => ({ schema, rootValue: req})))
